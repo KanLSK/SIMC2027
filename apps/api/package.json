@@ -1,0 +1,25 @@
+{
+  "name": "@simc/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@simc/db": "workspace:*",
+    "@simc/shared": "workspace:*",
+    "@supabase/supabase-js": "^2.49.8",
+    "drizzle-orm": "^0.44.2",
+    "hono": "^4.7.10",
+    "stripe": "^18.1.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250525.0",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.16.0"
+  }
+}

@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build
+.next
+dist
+.turbo
+.open-next
+.wrangler
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# IDE / OS
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cloudflare
+.dev.vars
+
+# Drizzle
+packages/db/drizzle/meta

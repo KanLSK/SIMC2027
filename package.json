@@ -1,0 +1,21 @@
+{
+  "name": "simc2027",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev --filter=@simc/web --filter=@simc/api",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "db:generate": "pnpm --filter @simc/db generate",
+    "db:migrate": "pnpm --filter @simc/db migrate",
+    "db:studio": "pnpm --filter @simc/db studio"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@10.11.1",
+  "engines": {
+    "node": ">=20"
+  }
+}

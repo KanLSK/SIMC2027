@@ -1,0 +1,15 @@
+name = "simc-api"
+main = "src/index.ts"
+compatibility_date = "2025-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Non-secret defaults; override in .dev.vars locally or Cloudflare dashboard
+# NEXT_PUBLIC_* are not needed here
+
+# Secrets (set via `wrangler secret put` or dashboard):
+# DATABASE_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY,
+# STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+
+[dev]
+port = 8787

@@ -1,0 +1,64 @@
+<USER_REQUEST>
+use this code for admin page "// ─────────── Admin · Data dashboard ───────────
+
+function AdminPage() {
+  const rows = [
+    ["SIMC-0023", "ภูริ พฤกษ์ภิญโญ", "Bangkok Christian", "M.6", 87, "Reviewed", "A"],
+    ["SIMC-0024", "วรรณนิดา ปานทอง", "Suankularb Wittayalai", "M.6", 92, "Reviewed", "A"],
+    ["SIMC-0025", "ปัณณวัฒน์ สุวรรณกิจ", "Triam Udom Suksa", "M.5", 78, "Pending", "B"],
+    ["SIMC-0026", "อนัญพร ศรีศักดิ์", "Mater Dei", "M.6", 95, "Reviewed", "A"],
+    ["SIMC-0027", "ชนกานต์ พรหมจักร", "Saint Joseph Convent", "M.5", 70, "Pending", "B"],
+    ["SIMC-0028", "ธีรเดช วงศ์ไพศาล", "Assumption College", "M.6", 88, "Reviewed", "A"],
+    ["SIMC-0029", "ปฤษฐา เพ็งสวัสดิ์", "Satriwithaya", "M.6", 81, "Reviewed", "B"],
+    ["SIMC-0030", "เสฏฐวุฒิ ภวภูตานนท์", "Bangkok Patana", "M.5", 65, "Flagged", "C"],
+    ["SIMC-0031", "ลลิตภัทร แซ่ลิ้ม", "Wattana Wittaya", "M.6", 90, "Reviewed", "A"],
+    ["SIMC-0032", "ภคพร เกษมพันธ์", "Streesmutprakarn", "M.6", 76, "Pending", "B"],
+  ];
+
+  return (
+    <ArtFrame tone="cool" dense={false}>
+      <div style={{ padding: "24px 32px", height: "100%", display: "grid", gridTemplateColumns: "240px 1fr", gap: 24 }}>
+        {/* Sidebar */}
+        <div className="glass" style={{ padding: 22, borderRadius: 22, display: "flex", flexDirection: "column", gap: 22 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <BrandMark size={28} />
+            <div>
+              <div className="display" style={{ fontSize: 15, color: "var(--cream)" }}>SIMC 27</div>
+              <div className="mono" style={{ color: "var(--ink-mute)" }}>Admin Console</div>
+            </div>
+          </div>
+       
+<truncated 45216 bytes>
+การให้คะแนน</div>
+          <div style={{
+            padding: 18, borderRadius: 14,
+            background: "rgba(10,3,6,0.4)", border: "1px solid var(--glass-border)",
+            display: "flex", flexDirection: "column", gap: 14,
+          }}>
+            {isGraded
+              ? rubric.map(([k, v, m], i) => <RubricRow key={i} label={k} value={v} max={m} />)
+              : rubricBlank.map(([k, m], i) => <RubricRow key={i} label={k} value={null} max={m} highlight={i === 0} />)
+            }
+            <div style={{ borderTop: "1px solid var(--glass-border)", paddingTop: 12, display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <div className="mono" style={{ color: "var(--gold)" }}>รวม</div>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+                <span className="display" style={{ fontSize: 28, color: isGraded ? "var(--gold)" : "var(--ink-faint)" }}>{isGraded ? score : "—"}</span>
+                <span style={{ fontSize: 12, color: "var(--ink-mute)", fontFamily: "var(--f-mono)" }}>/ {max}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Feedback */}
+          <div style={{ marginTop: 12 }}>
+            <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 6 }}>คอมเมนต์ถึงผู้สมัคร</div>
+            {isGraded ? (
+              <div style={{
+                padding: "12px 14px", borderRadius: 12,
+                background: "rgba(53,107,109,0.15)", border: "1px solid rgba(53,107,109,0.3)",
+                fontSize: 12.5, color: "var(--ink-2)", lineHeight: 1.6,
+              }}>{feedback}</div>
+            ) : (
+              <textarea rows={3} placeholder="เขียนคำแนะนำสั้นๆ ที่ผู้สมัครจะเห็นพร้
+<truncated 97293 bytes>
+
+NOTE: The output was truncated because it was too long. Use a more targeted query or a smaller range to get the information you need.

@@ -8,18 +8,6 @@ import { motion } from 'framer-motion';
 
 const BANNER = "/assets/backdrop.png";
 
-
-
-
-
-
-
-
-
-
-
-
-
 function HomePageBold() {
   return (
     <ArtFrame tone="deep">

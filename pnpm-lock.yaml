@@ -32,6 +32,9 @@ importers:
       hono:
         specifier: ^4.7.10
         version: 4.12.23
+      postgres:
+        specifier: ^3.4.9
+        version: 3.4.9
       stripe:
         specifier: ^18.1.0
         version: 18.5.0(@types/node@20.19.41)

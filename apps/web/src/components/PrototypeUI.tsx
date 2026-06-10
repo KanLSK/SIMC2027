@@ -73,19 +73,24 @@ export function SceneBG({ tone = "warm", children, dense = true }) {
 }
 
 // ─────────── Top nav (glass pill) ───────────
+import Link from "next/link";
+
 export function NavPill({ active = "home", brand = "SIMC 27" }) {
   const items = [
-    { id: "home", label: "หน้าแรก" },
-    { id: "exam", label: "ข้อสอบ" },
-    { id: "camp", label: "Camp Day" },
-    { id: "souvenir", label: "Souvenir" },
-    { id: "game", label: "Game" },
+    { id: "home", label: "หน้าแรก", href: "/" },
+    { id: "exam", label: "ข้อสอบ", href: "/exam" }, 
+    { id: "camp", label: "Camp Day", href: "/camp" },
+    { id: "souvenir", label: "Souvenir", href: "/souvenir" },
+    { id: "game", label: "Game", href: "/game" },
   ];
+
   return (
-    <div className="glass nav-pill" style={{
+    <div className="glass nav-pill bg-[#fdfaf5]/90 border border-[#a01010]/20" style={{
       display: "flex", alignItems: "center", gap: 4,
       padding: 6, borderRadius: 999,
+      backdropFilter: "blur(8px)",
     }}>
+      {/* Brand Section */}
       <div style={{
         padding: "10px 18px",
         fontFamily: "var(--f-display)",
@@ -94,21 +99,45 @@ export function NavPill({ active = "home", brand = "SIMC 27" }) {
         color: "var(--cream)",
         display: "flex", alignItems: "center", gap: 8,
       }}>
-        <BrandMark /> <span>{brand}</span>
+        <span>{brand}</span> 
       </div>
-      <div style={{ width: 1, height: 22, background: "var(--glass-border)", margin: "0 4px" }} />
+      
+      {/* เส้นแบ่ง */}
+      <div style={{ width: 1, height: 22, background: "#d1ccc4", margin: "0 4px" }} />
+      
+      {/* เมนูต่างๆ: เปลี่ยนมาใช้ <Link> เพื่อให้กดแล้วเปลี่ยนหน้าได้จริงแบบไม่โหลดใหม่ */}
       {items.map((it) => (
-        <a key={it.id} className={active === it.id ? "active" : ""} style={{
-          padding: "10px 16px", borderRadius: 999,
-          color: active === it.id ? "var(--cream)" : "var(--ink-2)",
-          textDecoration: "none", fontSize: 13,
-          background: active === it.id ? "var(--glass-fill-strong)" : "transparent",
-          border: active === it.id ? "1px solid var(--glass-border-strong)" : "1px solid transparent",
-          cursor: "pointer", transition: "all var(--t-fast)",
-        }}>{it.label}</a>
+        <Link 
+          key={it.id} 
+          href={it.href}
+          className={`${active === it.id ? "active" : ""} transition-all duration-200`} 
+          style={{
+            padding: "10px 16px", 
+            borderRadius: 999,
+            fontSize: 14,
+            fontWeight: active === it.id ? 600 : 400,
+            textDecoration: "none", 
+            color: active === it.id ? "#ffffff" : "#b5b5b5",
+            background: active === it.id ? "#a01010" : "transparent",
+            border: active === it.id ? "1px solid #800d0d" : "1px solid transparent",
+            cursor: "pointer",
+          }}
+        >
+          {it.label}
+        </Link>
       ))}
+      
       <div style={{ width: 8 }} />
-      <button className="btn btn-primary btn-sm" style={{ marginRight: 4 }}>สมัครเลย</button>
+      
+      {/* ปุ่มสมัครเลย: ปรับเป็นสีแดงเข้มดึงดูดสายตา */}
+      <Link href="/auth/signup" className="no-underline">
+        <button 
+          className="rounded-full bg-[#a01010] text-white px-5 py-2 text-sm font-semibold transition duration-300 hover:bg-[#800d0d] shadow-sm"
+          style={{ marginRight: 4 }}
+        >
+          สมัครเลย
+        </button>
+      </Link>
     </div>
   );
 }

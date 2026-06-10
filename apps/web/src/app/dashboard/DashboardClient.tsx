@@ -249,11 +249,11 @@ export default function DashboardClient({ displayName, applicantNo, email }: Pro
 
               {/* CTA */}
               <a
-                href="/exam"
+                href="/dashboard/exam"
                 className="flex items-center justify-center gap-2 w-full py-[14px] rounded-xl font-sans text-[14px] font-semibold text-[var(--cream)] no-underline tracking-[0.02em] bg-[linear-gradient(135deg,var(--primary)_0%,#6b0a14_100%)] border border-[rgba(198,27,16,0.5)] shadow-[0_8px_28px_rgba(143,15,27,0.5),inset_0_1px_0_rgba(255,247,226,0.1)] hover:shadow-[0_12px_36px_rgba(143,15,27,0.65),inset_0_1px_0_rgba(255,247,226,0.1)] hover:-translate-y-px transition-all duration-200"
               >
                 <LockIcon />
-                เข้าห้องเตรียมสอบ
+                เข้าทำข้อสอบ
               </a>
             </Card>
 

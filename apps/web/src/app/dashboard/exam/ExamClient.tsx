@@ -124,7 +124,7 @@ function SectionRow({ section, index }: { section: Section; index: number }) {
 
       {/* CTA — group-hover brightens background */}
       <a
-        href={`/exam/section/${index + 1}`}
+        href="/exam"
         className="flex items-center gap-1.5 shrink-0 px-5 py-[11px] rounded-[10px] font-sans text-[13px] font-semibold text-[var(--cream)] no-underline tracking-[0.02em] whitespace-nowrap border border-[rgba(198,27,16,0.5)] bg-[rgba(143,15,27,0.65)] group-hover:bg-[rgba(198,27,16,0.9)] group-hover:shadow-[0_6px_22px_rgba(143,15,27,0.6)] transition-all duration-200"
       >
         <PlayIcon />

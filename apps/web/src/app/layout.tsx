@@ -34,6 +34,7 @@ export default function RootLayout({
     <html
       lang="th"
       className={`${notoSerifThai.variable} ${ibmPlexSansThai.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans overflow-x-hidden">{children}</body>
     </html>

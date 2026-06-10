@@ -68,7 +68,7 @@ export function HeroSection() {
             อ่านรายละเอียด
           </Link>
           <Link
-            href="/auth/signup"
+            href="/auth/register"
             className="rounded-full bg-simc-gold px-8 py-3 text-lg font-semibold text-simc-dark hover:bg-simc-gold-light transition-colors"
           >
             สมัครเลย

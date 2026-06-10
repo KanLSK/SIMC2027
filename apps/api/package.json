@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
+    "dev": "WRANGLER_SEND_METRICS=false wrangler dev",
     "deploy": "wrangler deploy",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit"

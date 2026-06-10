@@ -18,57 +18,43 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div style={{
-      display: 'flex', height: '100vh', overflow: 'hidden',
+    <div className="flex h-screen overflow-hidden p-5 gap-5" style={{
       background: `
         radial-gradient(circle at 18% 18%, rgba(0, 170, 150, 0.32), transparent 32%),
         radial-gradient(circle at 80% 35%, rgba(130, 85, 40, 0.24), transparent 35%),
         radial-gradient(circle at 70% 85%, rgba(170, 20, 45, 0.35), transparent 42%),
         linear-gradient(135deg, #061514, #101211 55%, #17080c)
-      `,
-      padding: 20, gap: 20,
+      `
     }}>
       {/* ─── Sidebar glass card ─── */}
-      <aside className="glass" style={{
-        width: 256, flexShrink: 0, borderRadius: 22, padding: '28px 20px',
-        display: 'flex', flexDirection: 'column', overflow: 'hidden',
-      }}>
+      <aside className="glass w-64 shrink-0 rounded-[22px] py-7 px-5 flex flex-col overflow-hidden">
         {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 40, paddingLeft: 4 }}>
-          <div style={{
-            width: 36, height: 36, borderRadius: 999,
-            border: '1px solid var(--gold)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <Activity size={16} color="var(--gold)" />
+        <div className="flex items-center gap-3.5 mb-10 pl-1">
+          <div className="w-9 h-9 rounded-full border border-simc-gold flex items-center justify-center">
+            <Activity size={16} className="text-simc-gold" />
           </div>
           <div>
-            <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--cream)', letterSpacing: '0.05em' }}>SIMC 27</div>
-            <div className="mono" style={{ fontSize: 9, color: 'var(--ink-mute)', letterSpacing: '0.15em', marginTop: 2 }}>ADMIN CONSOLE</div>
+            <div className="text-[15px] font-semibold text-simc-cream tracking-wide">SIMC 27</div>
+            <div className="mono text-[9px] text-simc-ink-mute tracking-[0.15em] mt-0.5">ADMIN CONSOLE</div>
           </div>
         </div>
 
         {/* Navigation */}
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        <nav className="flex flex-col gap-1">
           {menuItems.map((item, i) => {
             const active = pathname === item.path;
             return (
               <div
                 key={i}
                 onClick={() => router.push(item.path)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 12,
-                  padding: '11px 14px', borderRadius: 12, cursor: 'pointer',
-                  background: active ? 'var(--glass-fill-strong)' : 'transparent',
-                  border: active ? '1px solid var(--glass-border-strong)' : '1px solid transparent',
-                  color: active ? 'var(--cream)' : 'var(--ink-mute)',
-                  transition: 'var(--t-fast)',
-                }}
+                className={`flex items-center gap-3 py-2.5 px-3.5 rounded-xl cursor-pointer transition-colors duration-200 border
+                  ${active ? 'bg-simc-glass-fill-strong border-simc-glass-border-strong text-simc-cream' 
+                           : 'bg-transparent border-transparent text-simc-ink-mute'}`}
               >
-                <span style={{ color: active ? 'var(--teal)' : 'var(--ink-faint)', flexShrink: 0 }}>{item.icon}</span>
-                <span style={{ fontSize: 13.5, fontWeight: active ? 500 : 400, flex: 1 }}>{item.label}</span>
+                <span className={`shrink-0 ${active ? 'text-simc-teal' : 'text-simc-ink-faint'}`}>{item.icon}</span>
+                <span className={`text-[13.5px] flex-1 ${active ? 'font-medium' : 'font-normal'}`}>{item.label}</span>
                 {active && (
-                  <div style={{ width: 5, height: 5, borderRadius: 999, background: 'var(--gold)', flexShrink: 0 }} />
+                  <div className="w-1.5 h-1.5 rounded-full bg-simc-gold shrink-0" />
                 )}
               </div>
             );
@@ -76,16 +62,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </nav>
 
         {/* Bottom snapshot — nested glass */}
-        <div className="glass" style={{ marginTop: 'auto', borderRadius: 14, padding: 14 }}>
-          <div className="kicker" style={{ marginBottom: 6, color: 'var(--gold)' }}>SNAPSHOT · 17 MAY</div>
-          <div style={{ fontSize: 11.5, color: 'var(--ink-mute)', lineHeight: 1.6 }}>
+        <div className="glass mt-auto rounded-[14px] p-3.5">
+          <div className="kicker mb-1.5 text-simc-gold">SNAPSHOT · 17 MAY</div>
+          <div className="text-[11.5px] text-simc-ink-mute leading-relaxed">
             Backups daily at 03:00 ICT · 14 days kept
           </div>
         </div>
       </aside>
 
       {/* ─── Main content ─── */}
-      <main style={{ flex: 1, overflowY: 'auto', padding: '4px 4px 4px 0' }}>
+      <main className="flex-1 overflow-y-auto p-1 pr-0">
         {children}
       </main>
     </div>

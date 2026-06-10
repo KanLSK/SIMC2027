@@ -4,6 +4,24 @@
   --color-background: var(--bg-0);
   --color-foreground: var(--ink);
   
+  --color-simc-bg-0: var(--bg-0);
+  --color-simc-bg-1: var(--bg-1);
+  --color-simc-bg-2: var(--bg-2);
+  --color-simc-ink: var(--ink);
+  --color-simc-ink-2: var(--ink-2);
+  --color-simc-ink-mute: var(--ink-mute);
+  --color-simc-ink-faint: var(--ink-faint);
+  --color-simc-primary: var(--primary);
+  --color-simc-primary-2: var(--primary-2);
+  --color-simc-primary-deep: var(--primary-deep);
+  --color-simc-teal: var(--teal);
+  --color-simc-gold: var(--gold);
+  --color-simc-cream: var(--cream);
+  --color-simc-glass-fill: var(--glass-fill);
+  --color-simc-glass-fill-strong: var(--glass-fill-strong);
+  --color-simc-glass-border: var(--glass-border);
+  --color-simc-glass-border-strong: var(--glass-border-strong);
+
   --font-sans: var(--f-body);
   --font-mono: var(--f-mono);
   --font-display: var(--f-display);
@@ -54,8 +72,8 @@
 
   --glass-fill: rgba(255,247,226, 0.055);
   --glass-fill-strong: rgba(255,247,226, 0.09);
-  --glass-border: rgba(255,247,226, 0.14);
-  --glass-border-strong: rgba(255,247,226, 0.22);
+  --glass-border: rgba(255,247,226, 0.06);
+  --glass-border-strong: rgba(255,247,226, 0.12);
   --glass-blur: 22px;
   --glass-saturate: 130%;
 
@@ -126,10 +144,36 @@ body {
   border-radius: inherit;
   padding: 1px;
   background: linear-gradient(135deg,
-    rgba(255,247,226,0.35),
+    rgba(255,247,226,0.12),
     rgba(255,247,226,0) 40%,
     rgba(255,247,226,0) 60%,
-    rgba(255,236,155,0.18)
+    rgba(255,236,155,0.08)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.glass-colored {
+  background: color-mix(in srgb, var(--card-color) 15%, var(--glass-fill));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-radius: var(--r-lg);
+  position: relative;
+}
+
+.glass-colored::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--card-color) 50%, transparent),
+    rgba(255,247,226,0) 40%,
+    rgba(255,247,226,0) 60%,
+    color-mix(in srgb, var(--card-color) 20%, transparent)
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -332,3 +376,86 @@ body {
 .flicker {
   animation: flicker 5s infinite;
 }
+
+/* ─── Falling Petals ─────────────────────────────────────────────── */
+.petal-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.petal {
+  position: absolute;
+  animation: petal-fall var(--dur, 16s) linear var(--delay, 0s) infinite;
+  will-change: transform, opacity;
+}
+
+.petal i {
+  display: block;
+  animation: petal-sway var(--dur, 16s) ease-in-out var(--delay, 0s) infinite;
+}
+
+@keyframes petal-fall {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 0.8; }
+  100% { transform: translate(var(--tx, 800px), var(--ty, 600px)) rotate(var(--tr, 360deg)); opacity: 0; }
+}
+
+@keyframes petal-sway {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(var(--sway, 20px)); }
+}
+
+/* ─── Dashboard App Background ─── */
+.app-bg {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 8%, rgba(180, 28, 24, 0.45), transparent 28%),
+    radial-gradient(circle at 78% 28%, rgba(150, 45, 35, 0.35), transparent 34%),
+    radial-gradient(circle at 48% 58%, rgba(160, 28, 38, 0.42), transparent 42%),
+    radial-gradient(circle at 16% 82%, rgba(120, 16, 12, 0.38), transparent 35%),
+    linear-gradient(180deg, #210405 0%, #260708 38%, #160507 72%, #050507 100%);
+}
+.app-bg::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 42%, rgba(0, 0, 0, 0.72) 100%);
+  z-index: 1;
+}
+.app-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255, 220, 130, 0.85) 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 180, 80, 0.45) 1px, transparent 1.5px);
+  background-size: 190px 190px, 310px 310px;
+  background-position: 70px 10px, 150px 90px;
+  opacity: 0.55;
+  z-index: 2;
+}
+.content {
+  position: relative;
+  z-index: 3;
+}
+.orbit {
+  position: fixed;
+  right: -170px;
+  top: 210px;
+  width: 480px;
+  height: 480px;
+  border: 16px solid rgba(255, 180, 140, 0.06);
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+}
+
